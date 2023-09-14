@@ -1,0 +1,205 @@
+.frame_top {
+  width:700px;
+  height:300px;
+  border:1px solid black;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.divTop {
+  display:flex;
+  flex-direction: row;
+}
+
+.divBottom {
+  display:flex;
+  flex-direction: row;
+}
+
+.divNom {
+  width:40%;
+  display:flex;
+  flex-direction:column;
+  margin:2% 5% 0% 5%;
+}
+
+.divImage {
+  width:40%;
+  display:flex;
+  flex-direction:column;
+  margin:2% 5% 0% 5%;
+}
+
+.divDuree {
+  width:40%;
+  display:flex;
+  flex-direction:column;
+  margin:2% 5% 2% 5%;
+}
+
+.divNote {
+  width:40%;
+  display:flex;
+  flex-direction:column;
+  margin:2% 5% 2% 5%;
+}
+
+#label_nom {
+  text-align: left;
+}
+
+#label_image {
+  text-align: left;
+}
+
+#label_duree {
+  text-align: left;
+}
+
+#label_note {
+  text-align: left;
+}
+
+#input {
+  height: 30px;
+}
+
+#button_add {
+  width:100px;
+  height:50px;
+  text-align: center;
+  margin:auto;
+}
+
+.div_recettes {
+  text-align: left;
+}
+
+.rec_div {
+  width:700px;
+  height:200px;
+  border:1px solid black;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+}
+.rec_div_left {
+  display: flex;
+  flex-direction: column;
+}
+
+.rec_div_right {
+  display: flex;
+  flex-direction: column;
+  text-align: end;
+  margin-left: 35%;
+}
+
+#nom_div {
+  text-align: left;
+  margin-left: 10%;
+}
+
+#note_div {
+  text-align: left;
+  margin:0% 0% 0% 10%;
+}
+
+#duree_div {
+  text-align: left;
+  margin:0% 0% 0% 10%;
+}
+
+#image_div {
+  text-align: right;
+  margin:0% 0% 0% 0%;
+}
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+#app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.vanilla:hover {
+  filter: drop-shadow(0 0 2em #3178c6aa);
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
