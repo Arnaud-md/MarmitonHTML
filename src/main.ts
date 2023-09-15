@@ -3,6 +3,27 @@ import typescriptLogo from './typescript.svg'
 import viteLogo from '/vite.svg'
 import { setupCounter } from './counter.ts'
 
+async function init() {
+  const response = await fetch("http://localhost:3333/send-recipe", {
+    headers: new Headers({
+      "Content-Type": "application/json",
+    }),
+    method: "POST",
+    body: JSON.stringify({
+      nom: "burger vegan aux haricots rouges",
+      image: "http://www.google.fr",
+      duree: 30,
+      note: 5
+    }),
+  })
+  console.log(response)
+  const data = await response.json()
+  console.log(data)
+}
+
+init();
+
+
 const app = document.querySelector<HTMLDivElement>('#app')!;
 app.innerHTML = `
   <div>
