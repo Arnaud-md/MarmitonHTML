@@ -121,7 +121,7 @@ butRemove.setAttribute("id","button_remove "+i);
 butRemove.setAttribute("type","button");
 butRemove.innerText = "Supprimer";
 buttonDiv.appendChild(butRemove);
-let j = i+1;
+//let j = i+1;
 // Créer un fetch d'une méthode Get pour obtenir l'id. ***abandonnée***
 butRemove.addEventListener('click', async() => {
   //const responseGet = await fetch("http://localhost:3333/getId/:
@@ -155,8 +155,8 @@ dureeDiv.setAttribute("id","duree_div");
 let minutes = tabRecipes[i].duree;
 let heures = 0;
 if (minutes>=60) {
-  minutes=minutes%60;
   heures=Math.floor(minutes/60);
+  minutes=minutes%60;
 }
 if (heures != 0) {
   dureeDiv.innerText = `

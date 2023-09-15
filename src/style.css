@@ -110,15 +110,16 @@
 }
 
 .rec_div_left {
+  width: 400px;
   display: flex;
   flex-direction: column;
 }
 
 .rec_div_right {
+  width: 100%;
   display: flex;
   flex-direction: column;
   text-align: end;
-  margin-left: 35%;
 }
 
 #nom_div {
@@ -138,7 +139,7 @@
 
 #image_div {
   text-align: right;
-  margin:0% 0% 0% 0%;
+  margin:0% 20px 0% auto;
 }
 
 :root {
