@@ -7,6 +7,12 @@
   flex-wrap: wrap;
 }
 
+.frame_title {
+  width:700px;
+  height:150px;
+  text-align: center;
+}
+
 .divTop {
   display:flex;
   flex-direction: row;
@@ -72,6 +78,18 @@
   margin:auto;
 }
 
+#button_remove {
+  width:100px;
+  height:30px;
+  margin: 0px 0px 0px 20px;
+}
+
+.button_div {
+  width:120px;
+  height:30px;
+  margin-top: 172px;
+}
+
 .div_recettes {
   text-align: left;
 }
@@ -84,6 +102,13 @@
   display: flex;
   flex-direction: row;
 }
+
+.section_all {
+  display: flex;
+  flex-direction: row;
+  width:100%;
+}
+
 .rec_div_left {
   display: flex;
   flex-direction: column;

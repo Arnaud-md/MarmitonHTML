@@ -3,32 +3,15 @@ import typescriptLogo from './typescript.svg'
 import viteLogo from '/vite.svg'
 import { setupCounter } from './counter.ts'
 
-async function init() {
-  const response = await fetch("http://localhost:3333/send-recipe", {
-    headers: new Headers({
-      "Content-Type": "application/json",
-    }),
-    method: "POST",
-    body: JSON.stringify({
-      nom: "burger vegan aux haricots rouges",
-      image: "http://www.google.fr",
-      duree: 30,
-      note: 5
-    }),
-  })
-  console.log(response)
-  const data = await response.json()
-  console.log(data)
-}
 
-init();
 
 
 const app = document.querySelector<HTMLDivElement>('#app')!;
-app.innerHTML = `
-  <div>
+const frameTitle = document.createElement('section');
+frameTitle.setAttribute("class","frame_title");
+app.appendChild(frameTitle);
+frameTitle.innerHTML = `
     <h1>Marmitop</h1>
-  </div>
 `
 const frameTop = document.createElement('section');
 frameTop.setAttribute("class","frame_top");
@@ -124,9 +107,29 @@ const tabRecipes = await start();
 console.log('tabRecipes',tabRecipes);
 
 for(let i=0;i<tabRecipes.length;i++) {
+const sectionAll = document.createElement("section");
+sectionAll.setAttribute("class","section_all");
 const recDiv = document.createElement("div");
 recDiv.setAttribute("class","rec_div");
-app.appendChild(recDiv);
+app.appendChild(sectionAll);
+sectionAll.appendChild(recDiv);
+const buttonDiv = document.createElement("div");
+buttonDiv.setAttribute("class","button_div");
+sectionAll.appendChild(buttonDiv);
+const butRemove = document.createElement("button");
+butRemove.setAttribute("id","button_remove "+i);
+butRemove.setAttribute("type","button");
+butRemove.innerText = "Supprimer";
+buttonDiv.appendChild(butRemove);
+let j = i+1;
+// Créer un fetch d'une méthode Get pour obtenir l'id. ***abandonnée***
+butRemove.addEventListener('click', async() => {
+  //const responseGet = await fetch("http://localhost:3333/getId/:
+  const response = await fetch("http://localhost:3333/delete-recipe/"+tabRecipes[i].id, {method: "DELETE"});
+  const issue = await response.text()
+  console.log(issue);
+})
+
 const recDiv_left = document.createElement("div");
 recDiv_left.setAttribute("class","rec_div_left");
 const recDiv_right = document.createElement("div");
@@ -170,8 +173,8 @@ recDiv_left.appendChild(dureeDiv);
 
 const imageDiv = document.createElement("div");
 imageDiv.setAttribute("id","image_div");
-imageDiv.innerText = `
-Lien : ${tabRecipes[i].image}
+imageDiv.innerHTML = `
+<img src="${tabRecipes[i].image}" alt="image_recette" width="200"></img>
 `;
 recDiv_right.appendChild(imageDiv);
 }
@@ -186,16 +189,36 @@ recDiv_right.appendChild(imageDiv);
 button_add.addEventListener('click', async() => {
   // input.value = ""
   console.log(nom.value)
-  let nomModifie = nom.value.replaceAll(" ","%20").replaceAll(":","%3A").replaceAll("/","%2F");
-  let imageModifie = lien_image.value.replaceAll(" ","%20").replaceAll(":","%3A").replaceAll("/","%2F").replaceAll("/","%2F");
-  console.log(imageModifie);
-  let dureeModifie = duree.value.replaceAll(" ","%20").replaceAll(":","%3A").replaceAll("/","%2F");
-  let noteModifie = note.value.replaceAll(" ","%20").replaceAll(":","%3A").replaceAll("/","%2F");
+  // Variables modifiees (la méthode marche)
+  // let nomModifie = nom.value.replaceAll(" ","%20").replaceAll(":","%3A").replaceAll("/","%2F");
+  // let imageModifie = lien_image.value.replaceAll(" ","%20").replaceAll(":","%3A").replaceAll("/","%2F");
+  // console.log(imageModifie);
+  // let dureeModifie = duree.value.replaceAll(" ","%20").replaceAll(":","%3A").replaceAll("/","%2F");
+  // let noteModifie = note.value.replaceAll(" ","%20").replaceAll(":","%3A").replaceAll("/","%2F");
   if(nom.value.length != 0) {
-    const resNom = await fetch("http://localhost:3333/saveRecipe/" + nomModifie +"/"+imageModifie +"/"+dureeModifie+"/"+noteModifie, {method : "POST"});
-    const messageNom = await resNom.text();
-    console.log(messageNom);
-
+    // Méthode fonctionnelle en commentaire avec les paramètres dans l'url
+    // const resNom = await fetch("http://localhost:3333/saveRecipe/" + nomModifie +"/"+imageModifie +"/"+dureeModifie+"/"+noteModifie, {method : "POST"});
+    // const messageNom = await resNom.text();
+    // console.log(messageNom);
+    async function save() {
+      const response = await fetch("http://localhost:3333/send-recipe", {
+        headers: new Headers({
+          "Content-Type": "application/json",
+        }),
+        method: "POST",
+        body: JSON.stringify({
+          nom: nom.value,
+          image: lien_image.value,
+          duree: duree.value,
+          note: note.value
+        }),
+      })
+      console.log(response)
+      const data = await response.json()
+      console.log(data)
+    }
+    
+    save();
     
   }
 });
